@@ -15,7 +15,7 @@ const globalSyltes = createGlobalStyle`
         font-size: 12px;
         background-color: rgba(20,20,20,0.8);
         color: white;
-        padding-top: 50px;
+        padding-top: 80px;
     }
 `;
 
