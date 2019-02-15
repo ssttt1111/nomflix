@@ -7,15 +7,25 @@ export default class extends React.Component {
     movieResults: null,
     tvResults: null,
     searchTerm: "",
-    loading: true,
+    loading: false,
     error: null
   };
 
-  handleSubmit = () => {
+  handleSubmit = event => {
+    event.preventDefault();
     const { searchTerm } = this.state;
     if (searchTerm !== "") {
-      this.searchByTerm(searchTerm);
+      this.searchByTerm();
     }
+  };
+
+  updateTerm = event => {
+    const {
+      target: { value }
+    } = event;
+    this.setState({
+      searchTerm: value
+    });
   };
 
   searchByTerm = async () => {
@@ -26,11 +36,11 @@ export default class extends React.Component {
         data: { results: movieResults }
       } = await moviesApi.search(searchTerm);
       const {
-        data: { results: showResults }
+        data: { results: tvResults }
       } = await tvApi.search(searchTerm);
       this.setState({
         movieResults,
-        showResults
+        tvResults
       });
     } catch {
       this.setState({ error: "Can't find results." });
@@ -49,6 +59,7 @@ export default class extends React.Component {
         error={error}
         searchTerm={searchTerm}
         handleSubmit={this.handleSubmit}
+        updateTerm={this.updateTerm}
       />
     );
   }
