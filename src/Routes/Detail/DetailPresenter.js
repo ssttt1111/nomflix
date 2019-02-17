@@ -61,6 +61,8 @@ const Divider = styled.span`
   margin: 0 10px;
 `;
 
+const Link = styled.a``;
+
 const Overview = styled.p`
   font-size: 12px;
   opacity: 0.8;
@@ -120,6 +122,14 @@ const DetailPresenter = ({ result, loading, error }) =>
                     : `${genre.name} / `
                 )}
             </Item>
+            <Divider>•</Divider>
+            <Link
+              href={`https://www.imdb.com/title/${result.imdb_id}`}
+              target="_blank"
+              title="Open IMDb page"
+            >
+              IMDB
+            </Link>
           </ItemContainer>
           <Overview>{result.overview}</Overview>
         </Data>
