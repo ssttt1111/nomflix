@@ -33,7 +33,7 @@ const SearchPresenter = ({
 }) => (
   <Container>
     <Helmet>
-      <title>Search | Nomflix</title>
+      <title>Search | Suflix</title>
     </Helmet>
     <Form onSubmit={handleSubmit}>
       <Input
@@ -47,13 +47,13 @@ const SearchPresenter = ({
     ) : (
       <>
         {movieResults && movieResults.length > 0 && (
-          <Section title="Movie Results">
+          <Section title="영화 검색 결과">
             {movieResults.map(movie => (
               <Poster
                 key={movie.id}
                 id={movie.id}
                 imageUrl={movie.poster_path}
-                title={movie.original_title}
+                title={movie.title}
                 rating={movie.vote_average}
                 isMovie={true}
                 year={movie.release_date.substring(0, 4)}
@@ -62,13 +62,13 @@ const SearchPresenter = ({
           </Section>
         )}
         {tvResults && tvResults.length > 0 && (
-          <Section title="TV Show Results">
+          <Section title="TV 검색 결과">
             {tvResults.map(show => (
               <Poster
                 key={show.id}
                 id={show.id}
                 imageUrl={show.poster_path}
-                title={show.original_name}
+                title={show.name}
                 rating={show.vote_average}
                 year={show.first_air_date.substring(0, 4)}
               />

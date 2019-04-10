@@ -14,23 +14,23 @@ const Container = styled.div`
 const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
   <>
     <Helmet>
-      <title>Movies | Nomflix</title>
+      <title>Movies | Suflix</title>
     </Helmet>
     {loading ? (
       <Loader />
     ) : (
       <Container>
         <Helmet>
-          <title>Movies | Nomflix</title>
+          <title>Movies | Suflix</title>
         </Helmet>
         {nowPlaying && nowPlaying.length > 0 && (
-          <Section title="Now Playing">
+          <Section title="현재 상영 영화">
             {nowPlaying.map(movie => (
               <Poster
                 key={movie.id}
                 id={movie.id}
                 imageUrl={movie.poster_path}
-                title={movie.original_title}
+                title={movie.title}
                 rating={movie.vote_average}
                 isMovie={true}
                 year={movie.release_date.substring(0, 4)}
@@ -39,13 +39,13 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
           </Section>
         )}
         {upcoming && upcoming.length > 0 && (
-          <Section title="Upcoming Movies">
+          <Section title="개봉 예정영화">
             {upcoming.map(movie => (
               <Poster
                 key={movie.id}
                 id={movie.id}
                 imageUrl={movie.poster_path}
-                title={movie.original_title}
+                title={movie.title}
                 rating={movie.vote_average}
                 isMovie={true}
                 year={movie.release_date.substring(0, 4)}
@@ -54,13 +54,13 @@ const HomePresenter = ({ nowPlaying, popular, upcoming, loading, error }) => (
           </Section>
         )}
         {popular && popular.length > 0 && (
-          <Section title="Popular Movies">
+          <Section title="인기 영화">
             {popular.map(movie => (
               <Poster
                 key={movie.id}
                 id={movie.id}
                 imageUrl={movie.poster_path}
-                title={movie.original_title}
+                title={movie.title}
                 rating={movie.vote_average}
                 isMovie={true}
                 year={movie.release_date.substring(0, 4)}
